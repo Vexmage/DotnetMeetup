@@ -1,0 +1,78 @@
+.publication-header {
+    background: var(--eug-background);
+    color: var(--eug-foreground);
+    border-block-start: 0.25rem solid var(--eug-primary);
+    border-block-end: 1px solid var(--eug-border);
+    font-family: var(--eug-font-interface);
+
+    &__masthead {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: baseline;
+        gap: var(--eug-space-2) var(--eug-space-6);
+        padding-block: var(--eug-space-4);
+        border-block-end: 1px solid var(--eug-border);
+    }
+
+    &__brand {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--eug-space-3);
+        justify-self: start;
+        max-inline-size: 100%;
+        color: var(--eug-foreground);
+        font: 700 var(--eug-type-masthead) / var(--eug-leading-heading) var(--eug-font-editorial);
+        overflow-wrap: anywhere;
+        text-decoration: none;
+
+        &:hover {
+            color: var(--eug-primary);
+        }
+    }
+
+    &__descriptor,
+    &__location {
+        margin: 0;
+        color: var(--eug-foreground-muted);
+        font-size: var(--eug-type-meta);
+    }
+
+    &__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 var(--eug-space-2);
+        margin: 0;
+        padding: var(--eug-space-1) 0;
+        list-style: none;
+
+        a {
+            display: flex;
+            align-items: center;
+            min-block-size: 2.75rem;
+            padding-inline: var(--eug-space-2);
+            color: var(--eug-foreground);
+            font-weight: 600;
+            text-decoration: none;
+            text-underline-offset: 0.3em;
+
+            &:hover,
+            &.active {
+                color: var(--eug-primary);
+                text-decoration: underline;
+                text-decoration-thickness: 0.125em;
+            }
+
+            &.active {
+                font-weight: 700;
+            }
+        }
+    }
+
+    @media (max-width: 36rem) {
+        &__masthead {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+}

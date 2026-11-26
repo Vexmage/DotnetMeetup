@@ -15,7 +15,7 @@ Evolve the existing DotnetMeetup application into EugDotNet, an independent Paci
 
 ## Working tree
 
-The current branch is `feature/mvp-work`, five commits ahead of its local origin-tracking ref. Existing uncommitted application and database changes are present in:
+The current branch is `feature/mvp-work`. Existing uncommitted application and database changes are present in:
 
 - `DotnetMeetup/DotnetMeetup.Client/Pages/Events.razor`
 - `DotnetMeetup/DotnetMeetup/Program.cs`
@@ -44,4 +44,8 @@ Track the prerendering failure, nullable-reference warnings, and a future .NET 1
 - Completed EUG-005 and EUG-006. The host stylesheet uses the approved palette, semantic tokens, and a two-tone keyboard focus indicator. The opt-in editorial classes provide responsive headings and reading text, a 68ch reading measure, metadata, and locally scrollable code blocks. Typography uses Georgia, system UI, and system monospace stacks. The new rules require no additional font assets or licenses.
 - Compiled the tracked CSS with the locally installed Sass 1.87.0. The SDK 9.0.102 solution build with `--no-restore` passed with the 11 existing nullable-reference warnings and zero errors. A headless Edge stylesheet fixture verified the paper background, responsive reading scale, localized code scrolling, and the visible focus outline on a Bootstrap button at 492px and 1416px viewport widths.
 - Representative contrast ratios from the compiled tokens include Forest Ink on Editorial Paper at 14.15:1, muted text at 5.80:1, and links and focus blue at 6.75:1. The light focus band against Cascade Evergreen measured 8.90:1. Coastal Mist on paper measured 1.31:1 and serves as a decorative divider. The separate control-border token measured 5.80:1 on paper.
-- Masthead, navigation, and homepage composition are subsequent assignments. Verify the typography and keyboard focus across actual page content and components as those assignments proceed.
+- Completed EUG-007 and EUG-008. The shared masthead pairs the existing mountain logo with the EugDotNet wordmark, publication descriptor, and Eugene location. Primary navigation wraps at narrow widths and uses underlined current-page states with `aria-current`. It links to available pages and uses the existing account login route.
+- The project owner completed manual visual review and approved the masthead and navigation's publication identity, typography, palette, and overall composition.
+- The SDK 9.0.102 solution build passed with zero errors and the existing nullable-reference warnings. Headless Edge verified the live masthead at 1440px and 320px, including the logo, wrapping, 44px link targets, active styling, and keyboard focus. The homepage, Events, Resources, Contribute, talk proposal, and sign-in returned HTTP 200 using an isolated SQLite database.
+- The protected `/forum` placeholder returns HTTP 500 on direct requests because authorization middleware is missing for that endpoint. It is omitted from the masthead. The existing route and authentication infrastructure remain in place for separate review.
+- The footer and homepage composition remain subsequent assignments. Screen-reader review and broader accessibility testing remain open.
