@@ -15,7 +15,7 @@ Evolve the existing DotnetMeetup application into EugDotNet, an independent Paci
 
 ## Working tree
 
-The current branch is `feature/mvp-work`, four commits ahead of its local origin-tracking ref. Existing uncommitted application and database changes are present in:
+The current branch is `feature/mvp-work`, five commits ahead of its local origin-tracking ref. Existing uncommitted application and database changes are present in:
 
 - `DotnetMeetup/DotnetMeetup.Client/Pages/Events.razor`
 - `DotnetMeetup/DotnetMeetup/Program.cs`
@@ -33,8 +33,15 @@ An untracked screenshot is also present. Preserve this existing work during asse
 
 The project owner reported a successful launch using SDK 9.0.102 and an isolated SQLite database. The smoke test verified migration, five event insertions, event API access, navigation, the homepage, Events and its calendar, Resources, and the contribution page. The anticipated prerendering BaseAddress error and a local HTTPS warning occurred.
 
-## Phase 00 review and open decisions
+## Phase 00 outcome and open decisions
 
-Phase 00 is complete and ready for owner review. The recommended direction retains the three Blazor projects, Bootstrap, SCSS, and SQLite. Editorial storage, public rendering modes, legacy route mappings, and archive identifiers remain open for owner review. External historical references and deployed data coverage remain unverified.
+Phase 00 is complete. The recommended direction retains the three Blazor projects, Bootstrap, SCSS, and SQLite. Editorial storage, public rendering modes, legacy route mappings, and archive identifiers remain open for owner review. External historical references and deployed data coverage remain unverified.
 
-Track the prerendering failure, nullable-reference warnings, and a future .NET 10 LTS migration as separate maintenance items. Record the local HTTPS warning with the development baseline. Phase 01 implementation and the framework upgrade each require owner approval.
+Track the prerendering failure, nullable-reference warnings, and a future .NET 10 LTS migration as separate maintenance items. The framework upgrade requires owner approval.
+
+## Phase 01 design foundation
+
+- Completed EUG-005 and EUG-006. The host stylesheet uses the approved palette, semantic tokens, and a two-tone keyboard focus indicator. The opt-in editorial classes provide responsive headings and reading text, a 68ch reading measure, metadata, and locally scrollable code blocks. Typography uses Georgia, system UI, and system monospace stacks. The new rules require no additional font assets or licenses.
+- Compiled the tracked CSS with the locally installed Sass 1.87.0. The SDK 9.0.102 solution build with `--no-restore` passed with the 11 existing nullable-reference warnings and zero errors. A headless Edge stylesheet fixture verified the paper background, responsive reading scale, localized code scrolling, and the visible focus outline on a Bootstrap button at 492px and 1416px viewport widths.
+- Representative contrast ratios from the compiled tokens include Forest Ink on Editorial Paper at 14.15:1, muted text at 5.80:1, and links and focus blue at 6.75:1. The light focus band against Cascade Evergreen measured 8.90:1. Coastal Mist on paper measured 1.31:1 and serves as a decorative divider. The separate control-border token measured 5.80:1 on paper.
+- Masthead, navigation, and homepage composition are subsequent assignments. Verify the typography and keyboard focus across actual page content and components as those assignments proceed.
