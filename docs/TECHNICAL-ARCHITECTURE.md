@@ -114,7 +114,7 @@ Inspect relevant files such as:
 
 - GitHub Actions workflows
 
-Produce a concise repository assessment before proposing significant architectural changes.
+Produce a concise repository assessment before proposing significant architectural changes. Defer framework upgrades and decisions about storage architecture, rendering strategy, and legacy routing until the assessment is complete.
 
 Do not assume that the existing application uses a particular Blazor hosting model or rendering mode.
 
@@ -725,7 +725,7 @@ Potential searchable fields include:
 
 - Published article text
 
-Only published and intentionally public content may be included in search results.
+Search and other discovery features may include published content and intentionally public archived content. Exclude drafts and private material.
 
 Evaluate search requirements as the content collection grows.
 
@@ -883,7 +883,7 @@ AI tools must not independently:
 
 - Purchase services.
 
-- Introduce paid dependencies.
+- Introduce any new dependency without explicit human approval.
 
 - Publish editorial material.
 
@@ -1124,7 +1124,9 @@ Preserve attribution and original event dates.
 
 ## 25. Implementation Sequence
 
-### Stage 1 — Repository assessment
+The [implementation plan](IMPLEMENTATION-PLAN.md) defines implementation phases and their numbering. The work below summarizes technical concerns by area.
+
+### Repository assessment
 
 - Inspect the existing application.
 
@@ -1136,7 +1138,7 @@ Preserve attribution and original event dates.
 
 - Identify technical constraints.
 
-### Stage 2 — Shared application foundation
+### Shared application foundation
 
 - Establish or refine shared layouts.
 
@@ -1148,7 +1150,7 @@ Preserve attribution and original event dates.
 
 - Implement the editorial visual foundation.
 
-### Stage 3 — Content foundation
+### Content foundation
 
 - Evaluate existing content mechanisms.
 
@@ -1160,7 +1162,7 @@ Preserve attribution and original event dates.
 
 - Establish publication filtering.
 
-### Stage 4 — Public sections
+### Public sections
 
 - Magazine
 
@@ -1172,7 +1174,7 @@ Preserve attribution and original event dates.
 
 - About
 
-### Stage 5 — Quality assurance
+### Quality assurance
 
 - Automated tests
 
@@ -1188,7 +1190,7 @@ Preserve attribution and original event dates.
 
 - Security review
 
-### Stage 6 — Deployment preparation
+### Deployment preparation
 
 - Verify production compatibility.
 
@@ -1200,7 +1202,7 @@ Preserve attribution and original event dates.
 
 - Obtain deployment approval.
 
-Each stage should produce a coherent, reviewable result.
+Each implementation phase should produce a coherent, reviewable result.
 
 Do not attempt to implement the entire proposed platform in a single uncontrolled change.
 
@@ -1226,7 +1228,7 @@ Potential decisions requiring documentation include:
 
 - External integrations
 
-- Major dependency additions
+- New dependency additions
 
 Architectural decision records may be stored in:
 

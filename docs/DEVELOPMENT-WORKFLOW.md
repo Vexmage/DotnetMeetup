@@ -677,9 +677,7 @@ Separate approval is required for:
 
 - Framework upgrades.
 
-- New runtime dependencies.
-
-- Major development dependencies.
+- All new dependencies, including runtime, development, and build tooling dependencies.
 
 - Database introduction.
 
@@ -711,7 +709,7 @@ General permission to work on the repository does not imply permission to perfor
 
 ## 20. Dependency Management
 
-Prefer the existing application dependencies where appropriate.
+Prefer the existing application dependencies where appropriate. All new dependencies require explicit human approval.
 
 Before proposing a new dependency, consider:
 

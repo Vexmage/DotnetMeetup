@@ -796,7 +796,7 @@ The approved foundational palette consists of:
 | Rainwater Blue    | #245B75 |
 | Coastal Mist      | #D4D8D0 |
 
-These colors establish the intended visual identity. Individual applications remain subject to accessibility and contrast testing.
+Preserve the approved Pacific Northwest visual direction. Test actual foreground and background combinations for accessibility. Individual color adjustments require explicit human approval following accessibility testing.
 
 The guiding aesthetic may be described as Pacific Northwest editorial modernism: understated, intellectually engaged, regionally grounded, and contemporary.
 

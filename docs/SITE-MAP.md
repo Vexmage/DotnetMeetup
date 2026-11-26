@@ -10,7 +10,7 @@ The website should remain rooted in Eugene, Springfield, and the surrounding Pac
 
 ## 2. Primary Navigation
 
-The primary navigation shall consist of:
+The six planned primary navigation destinations are:
 
 - Home
 
@@ -26,6 +26,8 @@ The primary navigation shall consist of:
 
 Navigation should remain concise, recognizable, accessible, and consistent across the website.
 
+Unfinished sections may be omitted from public launch navigation.
+
 ## 3. Site Hierarchy
 
 ```
@@ -40,7 +42,7 @@ EugDotNet
 │   ├── Infrastructure
 │   ├── Artificial Intelligence
 │   ├── Technology & Society
-│   ├── Interviews
+│   ├── Interviews & Community
 │   └── Article Detail
 │
 ├── Lab
@@ -126,7 +128,7 @@ It should accommodate both practical technical writing and broader interdiscipli
 | Infrastructure          | Linux, hosting, networking, databases and deployment                            |
 | Artificial Intelligence | AI-assisted development, tools, experimentation and emerging capabilities       |
 | Technology & Society    | Philosophy, ethics, technological history, economics and culture                |
-| Interviews              | Conversations with developers, researchers, entrepreneurs and community members |
+| Interviews & Community  | Conversations with developers, researchers, entrepreneurs and community members |
 
 ### Article listing
 
@@ -172,7 +174,7 @@ Individual articles should support:
 
 - Related articles
 
-Article types may include tutorials, essays, interviews, reviews, reporting, opinion, and technical case studies.
+Article types may include tutorials, essays, reviews, reporting, opinion, technical case studies, and Interview. Interviews & Community is an editorial category.
 
 Editorial classifications should help readers distinguish factual reporting from commentary and opinion.
 
@@ -376,7 +378,9 @@ These relationships should develop naturally rather than requiring every content
 
 The initial implementation should establish a functional foundation without requiring the complete realization of every proposed feature.
 
-### Phase 1 — Publication foundation
+The [implementation plan](IMPLEMENTATION-PLAN.md) defines implementation phases and their numbering.
+
+### Publication foundation
 
 - Shared site layout
 
@@ -400,7 +404,7 @@ The initial implementation should establish a functional foundation without requ
 
 - Responsive and accessible presentation
 
-### Phase 2 — Content expansion
+### Content expansion
 
 - Article categories and filtering
 
@@ -414,7 +418,7 @@ The initial implementation should establish a functional foundation without requ
 
 - Related-content relationships
 
-### Phase 3 — Extended functionality
+### Extended functionality
 
 - Site-wide search
 
@@ -448,7 +452,7 @@ Before making architectural changes, inspect the existing repository and determi
 
 Preserve useful existing functionality wherever practical.
 
-Do not replace the existing application framework, introduce a database, implement authentication, or add major external dependencies solely to satisfy this proposed site map.
+Do not replace the existing application framework, introduce a database, implement authentication, or add external dependencies solely to satisfy this proposed site map. All new dependencies require explicit human approval.
 
 Such architectural decisions require separate evaluation and explicit approval.
 

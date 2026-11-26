@@ -166,7 +166,7 @@ The initial publication lifecycle should support:
 | published | Approved for public distribution                                    |
 | archived  | Retained as historical material under an explicit visibility policy |
 
-Archival status does not necessarily imply that content is private or removed.
+Intentionally public archived content remains eligible for discovery and search. Archived content without explicit public visibility remains excluded.
 
 Historical meetup records may remain publicly accessible while being clearly identified as archival.
 
@@ -246,7 +246,7 @@ The initial article classifications should include:
 
 Article type and subject category are separate concepts.
 
-An article about artificial intelligence could be an interview, tutorial, essay, or piece of reporting.
+An article about artificial intelligence could be an interview, tutorial, essay, or piece of reporting. Interview is an article type. Interviews & Community is an editorial category.
 
 ### 8.3 Editorial categories
 
@@ -262,7 +262,7 @@ Initial proposed categories:
 
 - Technology and Society
 
-- Interviews and Community
+- Interviews & Community
 
 Category identifiers should remain stable even if display labels change.
 
@@ -495,7 +495,7 @@ Availability information should include a visible confirmation date.
 
 A profile without recently confirmed availability should not continue to imply that the developer is actively accepting work.
 
-A provisional freshness threshold of 90 days may be considered.
+Use a provisional availability freshness threshold of 90 days.
 
 When availability information becomes stale, display an unknown or unconfirmed availability state.
 
@@ -1107,9 +1107,9 @@ Only an authorized human editor may approve publication.
 
 ## 25. Implementation Priorities
 
-The initial implementation should prioritize:
+The [implementation plan](IMPLEMENTATION-PLAN.md) defines implementation phases and their numbering. The initial implementation should prioritize:
 
-### Phase 1
+### Initial content capabilities
 
 - Shared content metadata conventions.
 
@@ -1125,7 +1125,7 @@ The initial implementation should prioritize:
 
 - Basic content validation.
 
-### Phase 2
+### Expanded content capabilities
 
 - Laboratory project model.
 
@@ -1137,7 +1137,7 @@ The initial implementation should prioritize:
 
 - Directory availability handling.
 
-### Phase 3
+### Later content capabilities
 
 - Community event model.
 

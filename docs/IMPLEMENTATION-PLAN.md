@@ -4,7 +4,7 @@
 
 This document translates the EugDotNet project specification into an incremental engineering roadmap.
 
-It establishes development phases, workstreams, implementation priorities, dependencies, acceptance criteria, review requirements, and release milestones.
+It is authoritative for implementation phase numbering and establishes development phases, workstreams, implementation priorities, dependencies, acceptance criteria, review requirements, and release milestones.
 
 It complements:
 
@@ -366,7 +366,7 @@ Follow DESIGN-SYSTEM.md.
 
 Preserve the approved Pacific Northwest-inspired foundational palette.
 
-Evaluate actual color combinations for accessibility.
+Evaluate actual color combinations for accessibility. Obtain explicit human approval before adjusting individual palette colors after testing.
 
 ### Task EUG-006 — Typography system
 
@@ -408,7 +408,7 @@ Avoid generic software-as-a-service marketing layouts.
 
 ### Task EUG-008 — Primary navigation
 
-Implement or adapt navigation for:
+Plan and implement or adapt navigation for:
 
 - Home.
 
@@ -424,7 +424,7 @@ Implement or adapt navigation for:
 
 Navigation should remain accessible across desktop and mobile layouts.
 
-Unimplemented destinations must not misleadingly imply that functioning services or published content already exist.
+Unfinished sections may be omitted from public launch navigation. Unimplemented destinations must not misleadingly imply that functioning services or published content already exist.
 
 ### Task EUG-009 — Shared footer
 
@@ -624,7 +624,7 @@ Support:
 
 - Filtering by publication status.
 
-Content discovery should remain independent of presentation layout.
+Content discovery should remain independent of presentation layout. Intentionally public archived content remains eligible for discovery and search.
 
 ### Task EUG-016 — Markdown rendering
 
@@ -1146,7 +1146,7 @@ Show the last-confirmed date where appropriate.
 
 Do not continue to represent outdated availability as current.
 
-The proposed 90-day threshold requires confirmation before implementation.
+Use the provisional 90-day availability freshness threshold.
 
 ### Task EUG-039 — Participation and correction process
 
@@ -1646,7 +1646,7 @@ No feature should require fabricated production content.
 
 ### Dependency control
 
-New dependencies require evaluation and appropriate approval.
+All new dependencies require evaluation and explicit human approval.
 
 ### Human review
 
@@ -1931,7 +1931,7 @@ Human approval is required before:
 
 - Framework upgrades.
 
-- New major dependencies.
+- All new dependencies.
 
 - Content storage replacement.
 
@@ -2073,7 +2073,7 @@ Codex should:
 
 1. Read AGENTS.md.
 
-2. Read the relevant project documentation.
+2. Consult only the documentation relevant to the assessment.
 
 3. Inspect the existing repository.
 
