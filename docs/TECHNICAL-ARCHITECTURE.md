@@ -223,7 +223,40 @@ The following structure illustrates a possible organization.
 It is not a mandatory replacement for the existing repository structure.
 
 ```
-DotnetMeetup/├── docs/│   ├── PROJECT-BRIEF.md│   ├── SITE-MAP.md│   ├── DESIGN-SYSTEM.md│   └── TECHNICAL-ARCHITECTURE.md│├── Content/│   ├── Magazine/│   ├── Lab/│   ├── Directory/│   └── Community/│├── Components/│   ├── Layout/│   ├── Pages/│   ├── Editorial/│   ├── Lab/│   ├── Directory/│   ├── Community/│   └── Shared/│├── Models/├── Services/├── wwwroot/│   ├── css/│   ├── images/│   ├── fonts/│   └── js/│├── Tests/├── Program.cs├── appsettings.json└── README.md
+DotnetMeetup/
+├── docs/
+│   ├── PROJECT-BRIEF.md
+│   ├── SITE-MAP.md
+│   ├── DESIGN-SYSTEM.md
+│   └── TECHNICAL-ARCHITECTURE.md
+│
+├── Content/
+│   ├── Magazine/
+│   ├── Lab/
+│   ├── Directory/
+│   └── Community/
+│
+├── Components/
+│   ├── Layout/
+│   ├── Pages/
+│   ├── Editorial/
+│   ├── Lab/
+│   ├── Directory/
+│   ├── Community/
+│   └── Shared/
+│
+├── Models/
+├── Services/
+├── wwwroot/
+│   ├── css/
+│   ├── images/
+│   ├── fonts/
+│   └── js/
+│
+├── Tests/
+├── Program.cs
+├── appsettings.json
+└── README.md
 ```
 
 Adapt these conceptual directories to the existing solution and project structure.
@@ -1037,7 +1070,10 @@ Document the verified local development process.
 Where applicable, standard .NET commands may include:
 
 ```
-dotnet restoredotnet builddotnet testdotnet run
+dotnet restore
+dotnet build
+dotnet test
+dotnet run
 ```
 
 The exact commands must reflect the actual solution and project structure.

@@ -1791,7 +1791,24 @@ Do not publicly release incomplete features merely to make the application appea
 Implementation should generally follow these dependency relationships:
 
 ```
-Repository assessment    |    +-- Historical inventory    |    +-- Approved architecture            |            +-- Shared editorial foundation            |       |            |       +-- Homepage            |       +-- Shared page layouts            |            +-- Approved content architecture                    |                    +-- Magazine                    +-- Historical archive                    +-- Laboratory                    +-- Developer directory                    +-- Community resources
+Repository assessment
+    |
+    +-- Historical inventory
+    |
+    +-- Approved architecture
+            |
+            +-- Shared editorial foundation
+            |       |
+            |       +-- Homepage
+            |       +-- Shared page layouts
+            |
+            +-- Approved content architecture
+                    |
+                    +-- Magazine
+                    +-- Historical archive
+                    +-- Laboratory
+                    +-- Developer directory
+                    +-- Community resources
 ```
 
 Historical preservation, accessibility, security, and testing apply throughout the dependency structure.
@@ -1811,7 +1828,23 @@ A GitHub Issue should identify its corresponding planning identifier where usefu
 Example:
 
 ```
-Title:EUG-005 — Establish shared design tokensObjective:Implement the approved editorial color, typography,spacing, and layout foundations.References:- docs/DESIGN-SYSTEM.md- docs/TECHNICAL-ARCHITECTURE.mdAcceptance criteria:- Semantic color tokens are centralized.- Approved foundational palette is represented.- Existing functionality remains intact.- Relevant contrast combinations are evaluated.- Changes are available for review.
+Title:
+EUG-005 — Establish shared design tokens
+
+Objective:
+Implement the approved editorial color, typography,
+spacing, and layout foundations.
+
+References:
+- docs/DESIGN-SYSTEM.md
+- docs/TECHNICAL-ARCHITECTURE.md
+
+Acceptance criteria:
+- Semantic color tokens are centralized.
+- Approved foundational palette is represented.
+- Existing functionality remains intact.
+- Relevant contrast combinations are evaluated.
+- Changes are available for review.
 ```
 
 Do not automatically create every issue listed in this document.

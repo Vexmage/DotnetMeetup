@@ -79,7 +79,22 @@ Do not assume that a database or content management system is required.
 The following structure is illustrative and should be adapted to the existing repository.
 
 ```
-Content/├── Magazine/│   └── example-article.md├── Lab/│   └── example-project.md├── Directory/│   └── example-developer.json├── Contributors/│   └── example-contributor.json├── Community/│   ├── Meetups/│   ├── Events/│   └── Resources/└── Taxonomy/    ├── categories.json    └── technologies.json
+Content/
+├── Magazine/
+│   └── example-article.md
+├── Lab/
+│   └── example-project.md
+├── Directory/
+│   └── example-developer.json
+├── Contributors/
+│   └── example-contributor.json
+├── Community/
+│   ├── Meetups/
+│   ├── Events/
+│   └── Resources/
+└── Taxonomy/
+    ├── categories.json
+    └── technologies.json
 ```
 
 Engineering documentation must remain separate from publication content.
@@ -131,7 +146,8 @@ Slugs should:
 Example:
 
 ```
-id: article-0001slug: building-maintainable-blazor-applications
+id: article-0001
+slug: building-maintainable-blazor-applications
 ```
 
 The exact identifier generation strategy should be determined during implementation.
@@ -257,7 +273,30 @@ Prefer a controlled category taxonomy rather than unrestricted category creation
 The following example is illustrative development content and must not be automatically published.
 
 ```
----id: article-0001slug: building-maintainable-blazor-applicationstitle: Building Maintainable Blazor Applicationssubtitle: Architectural restraint in small software projectssummary: An exploration of practical architectural decisions for small Blazor applications.authorIds:  - foundercategory: engineeringarticleType: essaytags:  - dotnet  - blazor  - architecturestatus: draftfeatured: false---The complexity of a software application shouldreflect the complexity of the problem it solves.## IntroductionArticle content begins here.
+---
+id: article-0001
+slug: building-maintainable-blazor-applications
+title: Building Maintainable Blazor Applications
+subtitle: Architectural restraint in small software projects
+summary: An exploration of practical architectural decisions for small Blazor applications.
+authorIds:
+  - founder
+category: engineering
+articleType: essay
+tags:
+  - dotnet
+  - blazor
+  - architecture
+status: draft
+featured: false
+---
+
+The complexity of a software application should
+reflect the complexity of the problem it solves.
+
+## Introduction
+
+Article content begins here.
 ```
 
 The article title should ordinarily be rendered from metadata.
@@ -379,7 +418,33 @@ A published article about an experimental project does not imply that the projec
 ### 10.4 Example laboratory project
 
 ```
----id: project-0001slug: blazor-rendering-laboratorytitle: Blazor Rendering Laboratorysummary: An exploration of rendering strategies in modern Blazor applications.contributorIds:  - foundertechnologies:  - dotnet  - csharp  - blazorprojectType: technical-experimentprojectStatus: experimentalstatus: draft---## ObjectiveDocument the experiment and its intended outcomes.## ArchitectureDescribe the technical approach.## FindingsRecord observations and limitations.
+---
+id: project-0001
+slug: blazor-rendering-laboratory
+title: Blazor Rendering Laboratory
+summary: An exploration of rendering strategies in modern Blazor applications.
+contributorIds:
+  - founder
+technologies:
+  - dotnet
+  - csharp
+  - blazor
+projectType: technical-experiment
+projectStatus: experimental
+status: draft
+---
+
+## Objective
+
+Document the experiment and its intended outcomes.
+
+## Architecture
+
+Describe the technical approach.
+
+## Findings
+
+Record observations and limitations.
 ```
 
 ## 11. Developer Directory Model
@@ -497,7 +562,26 @@ Technologies describe particular languages, frameworks, platforms, and tools.
 This example represents fictional development data only.
 
 ```
-{  "id": "developer-example",  "slug": "example-developer",  "displayName": "Example Developer",  "professionalTitle": "Software Developer",  "region": "Eugene, Oregon",  "specialties": [    "Web Development",    "Software Architecture"  ],  "technologies": [    "dotnet",    "csharp",    "blazor"  ],  "availability": "unknown",  "availabilityTypes": [],  "publicContact": [],  "status": "draft"}
+{
+  "id": "developer-example",
+  "slug": "example-developer",
+  "displayName": "Example Developer",
+  "professionalTitle": "Software Developer",
+  "region": "Eugene, Oregon",
+  "specialties": [
+    "Web Development",
+    "Software Architecture"
+  ],
+  "technologies": [
+    "dotnet",
+    "csharp",
+    "blazor"
+  ],
+  "availability": "unknown",
+  "availabilityTypes": [],
+  "publicContact": [],
+  "status": "draft"
+}
 ```
 
 Fictional profiles must not be published as real directory entries.
@@ -740,7 +824,11 @@ Potential fields include:
 Example:
 
 ```
-heroImage:  src: /images/magazine/example-image.webp  alt: A laptop displaying a software architecture diagram  caption: An illustrative development environment.  credit: EugDotNet
+heroImage:
+  src: /images/magazine/example-image.webp
+  alt: A laptop displaying a software architecture diagram
+  caption: An illustrative development environment.
+  credit: EugDotNet
 ```
 
 Media must not be represented as documentary evidence when it is fictional, illustrative, or AI-generated.
@@ -776,7 +864,13 @@ Potential reference fields include:
 Example:
 
 ```
-references:  - id: parnas-1972    title: On the Criteria To Be Used in Decomposing Systems into Modules    author: David L. Parnas    publication: Communications of the ACM    publicationDate: 1972-12    doi: 10.1145/361598.361623
+references:
+  - id: parnas-1972
+    title: On the Criteria To Be Used in Decomposing Systems into Modules
+    author: David L. Parnas
+    publication: Communications of the ACM
+    publicationDate: 1972-12
+    doi: 10.1145/361598.361623
 ```
 
 References should support journalistic, academic, and technical source attribution.
@@ -838,7 +932,10 @@ A relationship should identify:
 Example:
 
 ```
-relatedContent:  - type: lab-project    id: project-0001    relationship: accompanying-project
+relatedContent:
+  - type: lab-project
+    id: project-0001
+    relationship: accompanying-project
 ```
 
 Potential relationships include:
@@ -872,7 +969,10 @@ Use ISO 8601-compatible date and timestamp formats.
 Examples:
 
 ```
-publishedAt: 2026-11-26updatedAt: 2026-12-03startsAt: 2026-12-10T18:00:00-08:00timeZone: America/Los_Angeles
+publishedAt: 2026-11-26
+updatedAt: 2026-12-03
+startsAt: 2026-12-10T18:00:00-08:00
+timeZone: America/Los_Angeles
 ```
 
 Use date-only values where precise time is unnecessary.

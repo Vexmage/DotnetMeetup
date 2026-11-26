@@ -123,7 +123,19 @@ Project documentation should be maintained in the docs directory.
 The proposed documentation structure is:
 
 ```
-DotnetMeetup/├── AGENTS.md├── README.md└── docs/    ├── PROJECT-BRIEF.md    ├── SITE-MAP.md    ├── DESIGN-SYSTEM.md    ├── TECHNICAL-ARCHITECTURE.md    ├── CONTENT-MODEL.md    ├── EDITORIAL-GUIDELINES.md    ├── DEVELOPMENT-WORKFLOW.md    ├── IMPLEMENTATION-PLAN.md    └── adr/
+DotnetMeetup/
+├── AGENTS.md
+├── README.md
+└── docs/
+    ├── PROJECT-BRIEF.md
+    ├── SITE-MAP.md
+    ├── DESIGN-SYSTEM.md
+    ├── TECHNICAL-ARCHITECTURE.md
+    ├── CONTENT-MODEL.md
+    ├── EDITORIAL-GUIDELINES.md
+    ├── DEVELOPMENT-WORKFLOW.md
+    ├── IMPLEMENTATION-PLAN.md
+    └── adr/
 ```
 
 AGENTS.md should provide concise repository-level instructions for AI coding agents and direct them to the relevant supporting documents.
@@ -277,7 +289,15 @@ Substantial work should occur in appropriately named branches.
 Examples:
 
 ```
-feat/editorial-homepagefeat/markdown-contentfeat/developer-directoryfeat/meetup-archivefix/navigation-accessibilityfix/article-renderingdocs/repository-assessmentrefactor/shared-layouttest/content-validation
+feat/editorial-homepage
+feat/markdown-content
+feat/developer-directory
+feat/meetup-archive
+fix/navigation-accessibility
+fix/article-rendering
+docs/repository-assessment
+refactor/shared-layout
+test/content-validation
 ```
 
 Use descriptive names that communicate the purpose of the work.
@@ -291,7 +311,10 @@ Before modifying files, inspect the current working tree.
 Typical commands include:
 
 ```
-git status -sbgit branch --show-currentgit diffgit log -5 --oneline
+git status -sb
+git branch --show-current
+git diff
+git log -5 --oneline
 ```
 
 Do not overwrite existing uncommitted work.
@@ -327,7 +350,14 @@ Conventional Commit-style prefixes may be used where compatible with existing re
 Examples:
 
 ```
-feat(magazine): add article listing pagefeat(content): implement publication filteringfix(layout): improve mobile navigationfix(a11y): improve keyboard focus visibilitydocs(architecture): document rendering strategytest(content): validate duplicate slugsrefactor(styles): centralize semantic color tokenschore(deps): update approved dependencies
+feat(magazine): add article listing page
+feat(content): implement publication filtering
+fix(layout): improve mobile navigation
+fix(a11y): improve keyboard focus visibility
+docs(architecture): document rendering strategy
+test(content): validate duplicate slugs
+refactor(styles): centralize semantic color tokens
+chore(deps): update approved dependencies
 ```
 
 Each commit should represent a coherent change.
@@ -579,7 +609,34 @@ A useful task description should establish:
 Example task:
 
 ```
-Objective:Implement the shared editorial masthead.Read:- AGENTS.md- docs/PROJECT-BRIEF.md- docs/SITE-MAP.md- docs/DESIGN-SYSTEM.mdScope:- Existing shared layout components.- Relevant shared stylesheets.- Necessary component tests.Constraints:- Preserve existing routes.- Preserve historical meetup content.- Do not introduce dependencies.- Do not change deployment configuration.- Do not commit or push.Verification:- Build the application.- Test desktop and mobile navigation where possible.- Report accessibility checks and limitations.Deliverable:A reviewable implementation and concise change report.
+Objective:
+Implement the shared editorial masthead.
+
+Read:
+- AGENTS.md
+- docs/PROJECT-BRIEF.md
+- docs/SITE-MAP.md
+- docs/DESIGN-SYSTEM.md
+
+Scope:
+- Existing shared layout components.
+- Relevant shared stylesheets.
+- Necessary component tests.
+
+Constraints:
+- Preserve existing routes.
+- Preserve historical meetup content.
+- Do not introduce dependencies.
+- Do not change deployment configuration.
+- Do not commit or push.
+
+Verification:
+- Build the application.
+- Test desktop and mobile navigation where possible.
+- Report accessibility checks and limitations.
+
+Deliverable:
+A reviewable implementation and concise change report.
 ```
 
 Do not assign broad instructions such as "finish the entire website" when the required work can be divided into smaller tasks.
@@ -801,7 +858,10 @@ Use verified commands appropriate to the existing solution.
 Potential standard commands include:
 
 ```
-dotnet restoredotnet builddotnet testdotnet run
+dotnet restore
+dotnet build
+dotnet test
+dotnet run
 ```
 
 The actual commands may require project or solution paths.
@@ -975,7 +1035,35 @@ Significant architectural decisions should be documented in docs/adr/.
 A proposed ADR format is:
 
 ```
-# ADR-0001: Decision Title## StatusProposed## ContextDescribe the problem and relevant constraints.## DecisionDescribe the proposed or approved decision.## AlternativesDescribe meaningful alternatives.## RationaleExplain why the decision is appropriate.## ConsequencesDescribe benefits, trade-offs, and limitations.## ApprovalRecord the approval status.
+# ADR-0001: Decision Title
+
+## Status
+
+Proposed
+
+## Context
+
+Describe the problem and relevant constraints.
+
+## Decision
+
+Describe the proposed or approved decision.
+
+## Alternatives
+
+Describe meaningful alternatives.
+
+## Rationale
+
+Explain why the decision is appropriate.
+
+## Consequences
+
+Describe benefits, trade-offs, and limitations.
+
+## Approval
+
+Record the approval status.
 ```
 
 Potential ADR statuses include:

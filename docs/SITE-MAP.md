@@ -29,7 +29,50 @@ Navigation should remain concise, recognizable, accessible, and consistent acros
 ## 3. Site Hierarchy
 
 ```
-EugDotNet│├── Home│├── Magazine│   ├── Latest Articles│   ├── Engineering│   ├── Languages & Frameworks│   ├── Infrastructure│   ├── Artificial Intelligence│   ├── Technology & Society│   ├── Interviews│   └── Article Detail│├── Lab│   ├── Projects│   ├── Experiments│   ├── Demonstrations│   ├── Open Source│   └── Project Detail│├── Directory│   ├── Developer Directory│   ├── Developer Profile│   └── Request a Listing│├── Community│   ├── Meetup Archive│   ├── Past Presentations│   ├── Local Technology Events│   └── Community Resources│├── About│   ├── Mission│   ├── History│   ├── Editorial Principles│   ├── Contributors│   └── Contact│└── Utility Pages    ├── Search    ├── Privacy Policy    ├── Accessibility    └── 404 / Not Found
+EugDotNet
+│
+├── Home
+│
+├── Magazine
+│   ├── Latest Articles
+│   ├── Engineering
+│   ├── Languages & Frameworks
+│   ├── Infrastructure
+│   ├── Artificial Intelligence
+│   ├── Technology & Society
+│   ├── Interviews
+│   └── Article Detail
+│
+├── Lab
+│   ├── Projects
+│   ├── Experiments
+│   ├── Demonstrations
+│   ├── Open Source
+│   └── Project Detail
+│
+├── Directory
+│   ├── Developer Directory
+│   ├── Developer Profile
+│   └── Request a Listing
+│
+├── Community
+│   ├── Meetup Archive
+│   ├── Past Presentations
+│   ├── Local Technology Events
+│   └── Community Resources
+│
+├── About
+│   ├── Mission
+│   ├── History
+│   ├── Editorial Principles
+│   ├── Contributors
+│   └── Contact
+│
+└── Utility Pages
+    ├── Search
+    ├── Privacy Policy
+    ├── Accessibility
+    └── 404 / Not Found
 ```
 
 The categories represented in this hierarchy are conceptual. They do not necessarily require independent pages or navigation entries during the initial implementation.
