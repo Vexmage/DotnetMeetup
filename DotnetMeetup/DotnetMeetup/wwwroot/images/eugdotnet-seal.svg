@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">EugDotNet mountain and code seal</title>
+  <circle cx="32" cy="32" r="29" fill="none" stroke="#164D40" stroke-width="2.5"/>
+  <path d="M10 44 23 29 32 18 54 44 43 43 36 45 25 44Z" fill="#164D40"/>
+  <g fill="none" stroke="#F5F2E9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m26 30-6 5 6 5m12-10 6 5-6 5m-3-13-6 16"/>
+  </g>
+</svg>
