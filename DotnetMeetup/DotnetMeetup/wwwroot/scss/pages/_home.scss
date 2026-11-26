@@ -1,32 +1,83 @@
-﻿@use 'sass:map';
-@use 'sass:color';
-@use '../variables';
-@use '../options';
-@import '../../lib/bootstrap/scss/variables';
+.editorial-home {
+    padding-block-start: clamp(var(--eug-space-6), 4vw, var(--eug-space-12));
 
-.front-row {
-    --front-row-bg: #{$front-row-bg};
-    --front-row-border-color: #{$front-row-border-color};
-    background-color: var(--front-row-bg);
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 100vh;
-    background-size: inherit;
-
-    //height: 15em;
-
-    @if $enable-front-row-image {
-        background-image: url('../../images/forrest_mountains.png');
-        background-position: 0em 91%;
-        background-blend-mode: lighten;
+    &__feature {
+        display: grid;
+        gap: var(--eug-space-6);
+        align-items: center;
     }
 
-    @media(min-width: map.get($grid-breakpoints, "sm")) {
-        background-size: auto;
-        padding-block: 0;
-        height: 25em;
+    &__intro {
+        max-inline-size: var(--eug-width-reading);
+        font-family: var(--eug-font-editorial);
+        font-size: var(--eug-type-reading);
+        line-height: var(--eug-leading-reading);
+
+        h1 {
+            margin: 0 0 var(--eug-space-4);
+            color: var(--eug-primary);
+            font-size: var(--eug-type-display);
+            font-weight: 700;
+            line-height: var(--eug-leading-heading);
+        }
+
+        p:last-child {
+            margin-block-end: 0;
+        }
     }
-    //@include gradient-bg($front-row-bg);
-    /*border-bottom: 2px solid var(--front-row-border-color);*/
+
+    &__illustration {
+        display: block;
+        inline-size: 100%;
+        block-size: auto;
+    }
+
+    &__section {
+        margin-block-start: var(--eug-space-8);
+    }
+
+    &__department {
+        h3 {
+            margin: 0 0 var(--eug-space-2);
+            font: 700 var(--eug-type-subheading) / var(--eug-leading-heading) var(--eug-font-editorial);
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+
+    &__community {
+        display: grid;
+        gap: var(--eug-space-4) var(--eug-space-8);
+    }
+
+    &__links {
+        margin: 0;
+        padding-inline-start: var(--eug-space-4);
+
+        li + li {
+            margin-block-start: var(--eug-space-2);
+        }
+
+        a {
+            color: var(--eug-link);
+            text-underline-offset: 0.15em;
+
+            &:hover {
+                color: var(--eug-primary-hover);
+            }
+        }
+    }
+
+    @media (min-width: 48rem) {
+        &__feature {
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            gap: var(--eug-space-8);
+        }
+
+        &__community {
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        }
+    }
 }

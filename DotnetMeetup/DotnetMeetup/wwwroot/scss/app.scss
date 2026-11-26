@@ -25,7 +25,14 @@
 @import 'components/navbar';
 @import 'components/buttons-links';
 @import 'components/calendar';
+@import 'components/splash_hero';
 @import 'pages/home';
 
 
 @import '../lib/bootstrap/scss/utilities/api';
+
+@import 'design-tokens';
+@import 'typography';
+@import 'components/publication-header';
+@import 'components/publication-footer';
+@import 'components/editorial';

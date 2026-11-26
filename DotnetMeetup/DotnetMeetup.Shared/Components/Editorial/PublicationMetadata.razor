@@ -1,0 +1,23 @@
+@using System.Globalization
+
+@if (!string.IsNullOrWhiteSpace(Author) || PublishedOn.HasValue)
+{
+    <p class="editorial-meta publication-metadata">
+        @if (!string.IsNullOrWhiteSpace(Author))
+        {
+            <span>By @Author</span>
+        }
+        @if (PublishedOn is { } date)
+        {
+            <time datetime="@date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)">@date.ToString("MMM d, yyyy", CultureInfo.CurrentCulture)</time>
+        }
+    </p>
+}
+
+@code {
+    [Parameter]
+    public string? Author { get; set; }
+
+    [Parameter]
+    public DateOnly? PublishedOn { get; set; }
+}

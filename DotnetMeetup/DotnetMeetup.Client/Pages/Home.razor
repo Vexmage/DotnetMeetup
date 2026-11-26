@@ -1,20 +1,95 @@
-﻿@page "/"
-@using DotnetMeetup.Shared.Components.Calendar
-@using DotnetMeetup.Shared.Components.CalendarPicker
-@using DotnetMeetup.Shared.Enums.UI
-@using Microsoft.AspNetCore.Authorization
-@using Microsoft.AspNetCore.Components.Web
-@attribute [StreamRendering]
+@page "/"
+@using DotnetMeetup.Shared.Components.Editorial
+@using DotnetMeetup.Shared.Models
+@inject HttpClient Http
 
-<PageTitle>Home</PageTitle>
+<PageTitle>EugDotNet | Technology, Engineering &amp; Community</PageTitle>
 
-<div class="front-row">
-    <div class="d-flex mx-0 w-100 h-100">
-        <Calendar @bind-SelectedDate="SelectedDate" Class="ms-sm-auto me-sm-5 mt-sm-auto mb-sm-5" />
-    </div>
-</div>
+<main class="editorial-container editorial-home">
+    <FeaturedContent>
+        <div class="editorial-home__feature">
+            <div class="editorial-home__intro">
+                <h1>From a local meetup to a regional technology publication</h1>
+                <p>EugDotNet began as a .NET meetup in Eugene, Oregon. It is growing into an independent publication about technology, engineering, and the people who build software in the Pacific Northwest.</p>
+                <p>The publication will cover practical engineering and share open experiments. The original meetup records and community resources remain available as that work takes shape.</p>
+            </div>
+            <img class="editorial-home__illustration" src="images/forrest_mountains.png"
+                 alt="Illustration of evergreen forests and layered mountain ridges" width="1536" height="1024" />
+        </div>
+    </FeaturedContent>
+
+    <section class="editorial-home__section" aria-labelledby="in-development">
+        <EditorialSectionHeading Id="in-development" Title="In development" />
+        <EditorialGrid>
+            <div class="editorial-home__department">
+                <h3>Magazine</h3>
+                <p>Technical articles, tutorials, interviews, and reporting for developers and curious readers.</p>
+            </div>
+            <div class="editorial-home__department">
+                <h3>Lab</h3>
+                <p>Software projects, experiments, and demonstrations that document how they were built and what was learned.</p>
+            </div>
+            <div class="editorial-home__department">
+                <h3>Developer Directory</h3>
+                <p>A voluntary directory for discovering developers and their areas of practice in the region.</p>
+            </div>
+        </EditorialGrid>
+    </section>
+
+    <section class="editorial-home__section" id="how-it-works" aria-labelledby="community">
+        <EditorialSectionHeading Id="community" Title="Community"
+                                 Description="Explore EugDotNet’s meetup history and find ways to take part." />
+        <div class="editorial-home__community">
+            <ul class="editorial-home__links">
+                <li><a href="/events">Meetup events and calendar</a></li>
+                <li><a href="/shared-resources">Shared resources</a></li>
+                <li><a href="/contribute">Contribute to EugDotNet</a></li>
+            </ul>
+            <div id="next-meetup">
+                @if (_nextMeetup is { } meetup)
+                {
+                    <PublicationNotice Title="Next meetup">
+                        <p>@meetup.Title</p>
+                        <p>
+                            <time datetime="@meetup.Date.ToString("s")">@meetup.Date.ToString("dddd, MMMM d, yyyy, h:mm tt")</time>
+                            @if (!string.IsNullOrWhiteSpace(meetup.Location))
+                            {
+                                <span> · @meetup.Location</span>
+                            }
+                        </p>
+                    </PublicationNotice>
+                }
+                else if (_eventsLoaded)
+                {
+                    <PublicationNotice Title="No upcoming meetups are listed." />
+                }
+            </div>
+        </div>
+    </section>
+</main>
 
 @code {
-    public CalendarDay SelectedDate { get; set; } = new() { Date = DateTime.Today, Colors = CalendarDayColor.Selected };
-}
+    private Event? _nextMeetup;
+    private bool _eventsLoaded;
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+            return;
+
+        // The same-origin API client is available after interactive rendering starts.
+        try
+        {
+            var events = await Http.GetFromJsonAsync<List<Event>>("api/events");
+            var now = DateTime.Now;
+            _nextMeetup = events?.Where(meetup => meetup.Date > now).MinBy(meetup => meetup.Date);
+            _eventsLoaded = events is not null;
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Failed to load events: {ex.Message}");
+        }
+
+        StateHasChanged();
+    }
+}

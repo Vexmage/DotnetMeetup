@@ -1,8 +1,23 @@
 ﻿@using DotnetMeetup.Shared.Components.CalendarPicker
+@using DotnetMeetup.Shared.Models
+
 @inherits StyleableBaseComponent
 
 <div class="calendar @Class">
     <div class="container-fluid p-0">
+
+
+        <div class="d-flex justify-content-between align-items-center mb-3 px-2">
+            <button class="btn btn-outline-secondary btn-sm" @onclick="() => IncDecMonth(-1)">
+                ← Previous
+            </button>
+            <strong>@SelectedMonth.ToString("MMMM yyyy")</strong>
+            <button class="btn btn-outline-secondary btn-sm" @onclick="() => IncDecMonth(1)">
+                Next →
+            </button>
+        </div>
+
+
         <div class="row calendar-header mb-2">
             <div class="fw-bolder col">
                 <div class="calendar-header-cell"> Sun </div>
@@ -32,39 +47,25 @@
             {
                 <div class="row mb-2">
                     <div class="col">
-                        <div class="calendar-day" style="@week.Days[0].Colors.ToCss()">
-                            @week.Days[0].Date.Day
-                        </div>
+                        @RenderDayCell(week.Days[0])
                     </div>
                     <div class="col">
-                        <div class="calendar-day" style="@week.Days[1].Colors.ToCss()">
-                            @week.Days[1].Date.Day
-                        </div>
+                        @RenderDayCell(week.Days[1])
                     </div>
                     <div class="col">
-                        <div class="calendar-day" style="@week.Days[2].Colors.ToCss()">
-                            @week.Days[2].Date.Day
-                        </div>
+                        @RenderDayCell(week.Days[2])
                     </div>
                     <div class="col">
-                        <div class="calendar-day" style="@week.Days[3].Colors.ToCss()">
-                            @week.Days[3].Date.Day
-                        </div>
+                        @RenderDayCell(week.Days[3])
                     </div>
                     <div class="col">
-                        <div class="calendar-day" style="@week.Days[4].Colors.ToCss()">
-                            @week.Days[4].Date.Day
-                        </div>
+                        @RenderDayCell(week.Days[4])
                     </div>
                     <div class="col">
-                        <div class="calendar-day" style="@week.Days[5].Colors.ToCss()">
-                            @week.Days[5].Date.Day
-                        </div>
+                        @RenderDayCell(week.Days[5])
                     </div>
                     <div class="col">
-                        <div class="calendar-day" style="@week.Days[6].Colors.ToCss()">
-                            @week.Days[6].Date.Day
-                        </div>
+                        @RenderDayCell(week.Days[6])
                     </div>
                 </div>
             }
@@ -78,6 +79,10 @@
     #region Parameters
     [Parameter]
     public CalendarDay? SelectedDate { get; set; }
+
+    [Parameter]
+    public List<CalendarEvent> Events { get; set; } = new();
+
 
     [Parameter]
     public EventCallback<CalendarDay> SelectedDateChanged { get; set; }
@@ -145,30 +150,51 @@
                 week = new();
                 Weeks.Add(week);
             }
-            CalendarDay day = new()
-                {
-                    Date = current
-                };
+
+            CalendarDay day = new() { Date = current };
 
             if (SelectedDate is not null && SelectedDate.HasDate && SelectedDate.Date == current)
-            {
                 day.Colors |= CalendarDayColor.Selected;
-            }
+
             if (day.Date.Date == DateTime.Today.Date)
-            {
                 day.Colors |= CalendarDayColor.Green;
-            }
+
+            // 🔥 Add this: mark day if it matches any event
+            if (Events?.Any(e => e.Date.Date == current.Date) == true)
+                day.Colors |= CalendarDayColor.Blue;
+
             week.Days = week.Days.Append(day).ToArray();
             current = current.AddDays(1);
         }
+
         int weekLength = Weeks[^1].Days.Length;
-        int missingDates = 7 - weekLength;
         for (int i = weekLength; i < 7; i++)
         {
             Weeks[^1].Days = Weeks[^1].Days.Append(new() { Date = current }).ToArray();
             current = current.AddDays(1);
         }
     }
+
+    private RenderFragment RenderDayCell(CalendarDay day) => __builder =>
+    {
+    var dayEvents = Events
+        .Where(e => e.Date.Date == day.Date.Date)
+        .ToList();
+
+    var tooltip = string.Join("\n", dayEvents.Select(e =>
+        $"{e.Title} at {e.Date:hh:mm tt}" +
+        (string.IsNullOrWhiteSpace(e.Location) ? "" : $" — {e.Location}")));
+
+    __builder.OpenElement(0, "div");
+    __builder.AddAttribute(1, "class", "calendar-day");
+    __builder.AddAttribute(2, "style", day.Colors.ToCss());
+    if (!string.IsNullOrWhiteSpace(tooltip))
+        __builder.AddAttribute(3, "title", tooltip);
+    __builder.AddContent(4, day.Date.Day);
+    __builder.CloseElement();
+    };
+
+
 
     private async Task SelectDateAsync(CalendarDay selected)
     {
@@ -204,4 +230,11 @@
         SelectedMonth = SelectedMonth.AddMonths(incriment);
         FillCalendar(SelectedMonth);
     }
+
+    protected override void OnParametersSet()
+    {
+        FillCalendar(SelectedMonth);
+    }
+
+
 }

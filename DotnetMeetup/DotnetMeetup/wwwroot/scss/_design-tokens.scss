@@ -1,0 +1,53 @@
+:root {
+    // Approved Pacific Northwest palette.
+    --eug-editorial-paper: #F6F4EE;
+    --eug-forest-ink: #202522;
+    --eug-cascade-evergreen: #244B3B;
+    --eug-fired-clay: #A34B2D;
+    --eug-rainwater-blue: #245B75;
+    --eug-coastal-mist: #D4D8D0;
+
+    --eug-background: var(--eug-editorial-paper);
+    --eug-surface: #fff;
+    --eug-foreground: var(--eug-forest-ink);
+    --eug-foreground-muted: #59615C;
+    --eug-border: var(--eug-coastal-mist);
+    --eug-control-border: var(--eug-foreground-muted);
+    --eug-primary: var(--eug-cascade-evergreen);
+    --eug-primary-hover: #18392B;
+    --eug-accent: var(--eug-fired-clay);
+    --eug-link: var(--eug-rainwater-blue);
+    --eug-focus: var(--eug-rainwater-blue);
+    --eug-focus-inner: var(--eug-editorial-paper);
+    --eug-code-background: #EAEDE7;
+
+    --eug-font-editorial: Georgia, Cambria, "Times New Roman", serif;
+    --eug-font-interface: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --eug-font-code: ui-monospace, Consolas, "Liberation Mono", monospace;
+    --eug-type-masthead: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+    --eug-type-display: clamp(2.25rem, 1.875rem + 1.875vw, 3.5rem);
+    --eug-type-page: clamp(2rem, 1.75rem + 1.25vw, 2.5rem);
+    --eug-type-section: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+    --eug-type-subheading: clamp(1.25rem, 1.125rem + 0.625vw, 1.5rem);
+    --eug-type-reading: clamp(1.125rem, 1.0625rem + 0.3125vw, 1.25rem);
+    --eug-type-body: 1rem;
+    --eug-type-meta: 0.875rem;
+    --eug-type-code: 0.875rem;
+    --eug-leading-heading: 1.2;
+    --eug-leading-interface: 1.5;
+    --eug-leading-reading: 1.65;
+
+    --eug-space-1: 0.25rem;
+    --eug-space-2: 0.5rem;
+    --eug-space-3: 0.75rem;
+    --eug-space-4: 1rem;
+    --eug-space-6: 1.5rem;
+    --eug-space-8: 2rem;
+    --eug-space-12: 3rem;
+    --eug-space-16: 4rem;
+    --eug-space-24: 6rem;
+    --eug-width-site: 80rem;
+    --eug-width-reading: 68ch;
+    --eug-radius-small: 0.25rem;
+    --eug-radius-medium: 0.5rem;
+}

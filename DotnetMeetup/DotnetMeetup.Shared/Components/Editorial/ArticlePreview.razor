@@ -1,0 +1,34 @@
+<article class="editorial-preview">
+    @if (!string.IsNullOrWhiteSpace(Category))
+    {
+        <EditorialCategory Name="@Category" />
+    }
+
+    <h3 class="editorial-preview__title"><a href="@Href">@Title</a></h3>
+    @if (!string.IsNullOrWhiteSpace(Summary))
+    {
+        <p class="editorial-preview__summary">@Summary</p>
+    }
+    <PublicationMetadata Author="@Author" PublishedOn="@PublishedOn" />
+</article>
+
+@code {
+    [Parameter, EditorRequired]
+    public string Title { get; set; } = string.Empty;
+
+    // Supply an application-generated URL for the published article.
+    [Parameter, EditorRequired]
+    public string Href { get; set; } = string.Empty;
+
+    [Parameter]
+    public string? Summary { get; set; }
+
+    [Parameter]
+    public string? Category { get; set; }
+
+    [Parameter]
+    public string? Author { get; set; }
+
+    [Parameter]
+    public DateOnly? PublishedOn { get; set; }
+}

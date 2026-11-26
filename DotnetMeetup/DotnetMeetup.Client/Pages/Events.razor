@@ -1,5 +1,158 @@
 ﻿@page "/events"
+@using DotnetMeetup.Shared.Components
+@using DotnetMeetup.Shared.Models
+@using DotnetMeetup.Shared.Components.Calendar
+
+
+<PageTitle>Events</PageTitle>
+
+<section class="py-5">
+    <div class="container">
+
+        <!-- Header -->
+        <h1 class="mb-4 text-center">Events</h1>
+        <p class="text-center mb-5">
+            We meet monthly for talks, workshops, and casual code jams — both in person and online.
+            New to .NET? You’re welcome. Curious but unsure? Show up and say hi.
+        </p>
+
+        <!-- Upcoming Events -->
+        <h2 class="mb-3">📅 Upcoming Events</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="bg-light border rounded p-4 text-center">
+                    <em>Calendar coming soon…</em>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <EventCard Title="TBA" DateInfo="TBA" Location="Deschutes Hall Room 220, UO" />
+            </div>
+        </div>
+
+        <!-- Past Events -->
+        <h2 class="mt-5 mb-3">🕰 Past Events</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <EventCard Title="Code Koans and Katas"
+                           DateInfo="Wed, Apr 23 – 6:00 PM"
+                           Location="Deschutes Hall Room 220, UO"
+                           Description="Michael Birchmeier guided us through Code Koans and Katas—interactive coding exercises for sharpening skills and deepening understanding." />
+            </div>
+            <div class="col-md-6">
+                <EventCard Title="ASP.NET Core MVC Workshop"
+                           DateInfo="Wed, Mar 12 – 6:00 PM"
+                           Location="Deschutes Hall Room 220, UO"
+                           Description="Presented by Joel Southall, this hands-on intro to ASP.NET Core MVC used EF Core and SQLite. We explored CRUD operations and MVC patterns in a practical .NET session." />
+            </div>
+
+            <div class="col-md-6">
+                <EventCard Title=".NET Dinner – February"
+                           DateInfo="Fri, Feb 28 – 5:30 PM"
+                           Location="Claim 52 Kitchen, Eugene"
+                           Description="Hosted by Mark Davis, an informal community dinner to share updates about upcoming EugDotNet meetups, introduce the team, and discuss CodeChops — a mentoring program for learning Blazor and Oqtane." />
+            </div>
+
+            <div class="col-md-6">
+                <EventCard Title=".NET Dinner – January"
+                           DateInfo="Wed, Jan 8 – 5:30 PM"
+                           Location="Claim 52 Kitchen, Eugene"
+                           Description="An evening of conversation and connection for .NET developers in Eugene. Hosted by Mark Davis, this casual dinner welcomed newcomers and veterans alike to network, share insights, and discuss the local dev scene." />
+            </div>
+        </div>
+
+        <!-- Call to action -->
+        <p class="mt-4 text-center text-muted">
+            Want to give a talk or suggest a topic? <a href="/contribute">Check out the Contribute page</a> or say hi in Discord.
+        </p>
+
+        <!-- Dynamic Events List (from SQLite) -->
+        <hr class="my-5" />
+        <h3 class="text-center mb-4">📚 Events in Database</h3>
+
+        @if (events == null)
+        {
+            <p class="text-center"><em>Loading database events…</em></p>
+        }
+        else if (!events.Any())
+        {
+            <p class="text-center"><em>No events found in database yet.</em></p>
+        }
+        else
+        {
+            <div class="row">
+                @foreach (var ev in events.OrderByDescending(e => e.Date))
+                {
+                    <div class="col-md-6 mb-4">
+                        <EventCard Title="@ev.Title"
+                                   DateInfo="@ev.Date.ToString("ddd, MMM d – h:mm tt")"
+                                   Location="@ev.Location"
+                                   Description="@ev.Description" />
+                    </div>
+                }
+            </div>
+        }
+
+        <!-- Calendar -->
+        <hr class="my-5" />
+        <h3 class="text-center my-4">📅 Event Calendar</h3>
+
+        @if (events != null)
+        {
+            <div class="row">
+                <div class="col">
+                    <p class="text-muted text-center">Calendar component rendered ✅</p>
+                    <Calendar Events="@calendarEvents" />
+                </div>
+            </div>
+        }
+        <!-- Meetup -->
+        <div class="mb-4 text-center">
+            <h5>📅 Join Us on Meetup</h5>
+            <p>
+                Most of our event announcements and RSVP tracking happen on our Meetup page.
+                Follow us there to stay updated and get reminders!
+            </p>
+            <a href="https://www.meetup.com/eugdotnet/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                Visit EugDotNet on Meetup
+            </a>
+        </div>
+
+    </div>
+</section>
+
+@inject HttpClient Http
 
 @code {
+    private List<EventDto>? events;
+    private List<CalendarEvent> calendarEvents = new();
 
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            events = await Http.GetFromJsonAsync<List<EventDto>>("api/events");
+            calendarEvents = events
+                .Select(e => new CalendarEvent
+                    {
+                        Date = e.Date,
+                        Title = e.Title,
+                        Location = e.Location,
+                        Description = e.Description
+                    })
+                .ToList();
+
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Failed to load events: {ex.Message}");
+        }
+    }
+
+    public class EventDto
+    {
+        public string Title { get; set; } = "";
+        public string? Description { get; set; }
+        public DateTime Date { get; set; }
+        public string? Location { get; set; }
+    }
 }

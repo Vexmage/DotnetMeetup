@@ -1,82 +1,25 @@
-﻿@using DotnetMeetup.Shared.Enums.UI
-@using DotnetMeetup.Shared.Icon
-@using DotnetMeetup.Shared.Enums.Style
 @using Microsoft.AspNetCore.Components.Routing
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@inject NavigationManager _nav
 
-<nav class="navbar navbar-expand-md bg-secondary text-light">
-    <div class="container-fluid">
-        <a class="navbar-brand text-light" href="#">Dotnet Meetup HQ</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dotnetToggler" aria-controls="dotnetToggler" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-
-    <div class="collapse navbar-collapse align-items-sm-baseline" id="dotnetToggler">
-
-        <div class="navbar-nav ms-md-auto me-md-3">
-
-            <div class="nav-item">
-                <NavLink class="nav-link" Match="NavLinkMatch.All" href="/" ActiveClass="active">
-                    Home
-                </NavLink>
-            </div>
-            <div class="nav-item">
-                <NavLink class="nav-link" Match="NavLinkMatch.Prefix" href="/events" ActiveClass="active">
-                    Events
-                </NavLink>
-            </div>
-            <div class="nav-item">
-                <NavLink class="nav-link" Match="NavLinkMatch.Prefix" href="/shared-resources" ActiveClass="active">
-                    Resources
-                </NavLink>
-            </div>
-            <div class="nav-item">
-                <NavLink class="nav-link" Match="NavLinkMatch.Prefix" href="/forum" ActiveClass="active">
-                    Forum
-                </NavLink>
-            </div>
-            <div class="nav-item">
-                <NavLink class="nav-link" Match="NavLinkMatch.Prefix" href="/contribute" ActiveClass="active">
-                    Contribute
-                </NavLink>
-            </div>
-            <div class="nav-item">
-                <a class="nav-link" href="https://github.com/Dfreem/DotnetMeetup">
-                    Github
-                </a>
-            </div>
-
+<header class="publication-header">
+    <div class="editorial-container">
+        <div class="publication-header__masthead">
+            <a class="publication-header__brand" href="/">
+                <img src="images/eugdotnet-navbar-logo.png" alt="" width="48" height="48" />
+                <span>EugDotNet</span>
+            </a>
+            <p class="publication-header__descriptor">Technology, Engineering &amp; Community</p>
+            <p class="publication-header__location">Eugene, Oregon</p>
         </div>
-        <div class="col-auto mx-4 fs-14 align-baseline">
-            <AuthorizeView>
-                <Authorized>
-                    <NavLink class="link icon-link" href="Account/Manage/">
-                        <Icon IconName="IconFontAwesome.FaPersonBooth"
-                              TIcon="IconFontAwesome"
-                              Vendor="IconVendor.FontAwesomeSolid" FontSize="FontSize.FS20" />
-                        @context.User.Identity?.Name
-                    </NavLink>
-                    <NavLink class="link-purple-200" href="Account/logout">Log Out</NavLink>
-                </Authorized>
-                <NotAuthorized>
-                    <NavLink class="link-purple-200 link" href="Account/Login">Log in</NavLink>
-                </NotAuthorized>
-            </AuthorizeView>
-        </div>
+
+        <nav aria-label="Primary">
+            <ul class="publication-header__links">
+                <li><NavLink href="/" Match="NavLinkMatch.All">Home</NavLink></li>
+                <li><NavLink href="/events" Match="NavLinkMatch.All">Events</NavLink></li>
+                <li><NavLink href="/shared-resources" Match="NavLinkMatch.All">Resources</NavLink></li>
+                <li><NavLink href="/contribute" Match="NavLinkMatch.All">Contribute</NavLink></li>
+                <li><a href="https://github.com/Dfreem/DotnetMeetup">GitHub</a></li>
+                <li><NavLink href="/Account/Login" Match="NavLinkMatch.All">Log in</NavLink></li>
+            </ul>
+        </nav>
     </div>
-</nav>
-
-@code {
-
-    [CascadingParameter]
-    public Task<AuthenticationState>? AuthState { get; set; }
-
-
-    public void BeginLogOut()
-    {
-        _nav.NavigateToLogout("/Account/Logout");
-    }
-
-}
+</header>

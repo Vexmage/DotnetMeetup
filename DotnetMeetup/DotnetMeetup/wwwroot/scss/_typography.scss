@@ -1,0 +1,89 @@
+body {
+    --bs-body-bg: var(--eug-background);
+    --bs-body-color: var(--eug-foreground);
+    --bs-body-font-family: var(--eug-font-interface);
+    --bs-body-font-size: var(--eug-type-body);
+    --bs-body-line-height: var(--eug-leading-interface);
+}
+
+.editorial-container {
+    max-inline-size: var(--eug-width-site);
+    margin-inline: auto;
+    padding-inline: var(--eug-space-4);
+}
+
+.editorial-prose {
+    max-inline-size: var(--eug-width-reading);
+    margin-inline: auto;
+    font-family: var(--eug-font-editorial);
+    font-size: var(--eug-type-reading);
+    line-height: var(--eug-leading-reading);
+    overflow-wrap: anywhere;
+
+    :is(h1, h2, h3, h4, h5, h6) {
+        font-weight: 700;
+        line-height: var(--eug-leading-heading);
+        margin-block: var(--eug-space-8) var(--eug-space-3);
+    }
+
+    h1 {
+        font-size: var(--eug-type-page);
+    }
+
+    h2 {
+        font-size: var(--eug-type-section);
+    }
+
+    :is(h3, h4, h5, h6) {
+        font-size: var(--eug-type-subheading);
+    }
+
+    .editorial-display {
+        font-size: var(--eug-type-display);
+    }
+
+    :is(p, ul, ol, blockquote, pre) {
+        margin-block-end: var(--eug-space-4);
+    }
+
+    a {
+        color: var(--eug-link);
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+
+        &:hover {
+            color: var(--eug-primary-hover);
+        }
+    }
+
+    :is(code, kbd, samp, pre) {
+        font-family: var(--eug-font-code);
+        font-size: var(--eug-type-code);
+    }
+
+    :is(code, pre) {
+        background-color: var(--eug-code-background);
+        color: var(--eug-foreground);
+        border-radius: var(--eug-radius-small);
+    }
+
+    pre {
+        overflow: auto;
+        overflow-wrap: normal;
+        padding: var(--eug-space-3);
+    }
+}
+
+.editorial-meta {
+    font-family: var(--eug-font-interface);
+    font-size: var(--eug-type-meta);
+    line-height: var(--eug-leading-interface);
+    color: var(--eug-foreground-muted);
+}
+
+// The light inner ring stays visible against dark or photographic surfaces.
+:is(a[href], button, input, select, textarea, summary, [tabindex], .btn):focus-visible {
+    outline: 2px solid var(--eug-focus);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--eug-focus-inner);
+}
