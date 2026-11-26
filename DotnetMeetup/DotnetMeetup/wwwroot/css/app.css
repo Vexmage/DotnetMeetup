@@ -9432,25 +9432,70 @@ h4:focus-visible {
   background-color: rgb(80.391509434, 46.6037735849, 200.3962264151);
 }
 
-.front-row {
-  --front-row-bg: rgba(255, 252, 240, 0.6666666667);
-  --front-row-border-color: #D5C9FF;
-  background-color: var(--front-row-bg);
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 100vh;
-  background-size: inherit;
-  background-image: url("../../images/forrest_mountains.png");
-  background-position: 0em 91%;
-  background-blend-mode: lighten;
-  /*border-bottom: 2px solid var(--front-row-border-color);*/
+.editorial-home {
+  padding-block-start: clamp(var(--eug-space-6), 4vw, var(--eug-space-12));
 }
-@media (min-width: 576px) {
-  .front-row {
-    background-size: auto;
-    padding-block: 0;
-    height: 25em;
+.editorial-home__feature {
+  display: grid;
+  gap: var(--eug-space-6);
+  align-items: center;
+}
+.editorial-home__intro {
+  max-inline-size: var(--eug-width-reading);
+  font-family: var(--eug-font-editorial);
+  font-size: var(--eug-type-reading);
+  line-height: var(--eug-leading-reading);
+}
+.editorial-home__intro h1 {
+  margin: 0 0 var(--eug-space-4);
+  color: var(--eug-primary);
+  font-size: var(--eug-type-display);
+  font-weight: 700;
+  line-height: var(--eug-leading-heading);
+}
+.editorial-home__intro p:last-child {
+  margin-block-end: 0;
+}
+.editorial-home__illustration {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+.editorial-home__section {
+  margin-block-start: var(--eug-space-8);
+}
+.editorial-home__department h3 {
+  margin: 0 0 var(--eug-space-2);
+  font: 700 var(--eug-type-subheading)/var(--eug-leading-heading) var(--eug-font-editorial);
+}
+.editorial-home__department p {
+  margin: 0;
+}
+.editorial-home__community {
+  display: grid;
+  gap: var(--eug-space-4) var(--eug-space-8);
+}
+.editorial-home__links {
+  margin: 0;
+  padding-inline-start: var(--eug-space-4);
+}
+.editorial-home__links li + li {
+  margin-block-start: var(--eug-space-2);
+}
+.editorial-home__links a {
+  color: var(--eug-link);
+  text-underline-offset: 0.15em;
+}
+.editorial-home__links a:hover {
+  color: var(--eug-primary-hover);
+}
+@media (min-width: 48rem) {
+  .editorial-home__feature {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--eug-space-8);
+  }
+  .editorial-home__community {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   }
 }
 

@@ -39,7 +39,7 @@ Phase 00 is complete. The recommended direction retains the three Blazor project
 
 Track the prerendering failure, nullable-reference warnings, and a future .NET 10 LTS migration as separate maintenance items. The framework upgrade requires owner approval.
 
-## Phase 01 design foundation
+## Phase 01 design foundation implemented
 
 - Completed EUG-005 and EUG-006. The host stylesheet uses the approved palette, semantic tokens, and a two-tone keyboard focus indicator. The opt-in editorial classes provide responsive headings and reading text, a 68ch reading measure, metadata, and locally scrollable code blocks. Typography uses Georgia, system UI, and system monospace stacks. The new rules require no additional font assets or licenses.
 - Compiled the tracked CSS with the locally installed Sass 1.87.0. The SDK 9.0.102 solution build with `--no-restore` passed with the 11 existing nullable-reference warnings and zero errors. A headless Edge stylesheet fixture verified the paper background, responsive reading scale, localized code scrolling, and the visible focus outline on a Bootstrap button at 492px and 1416px viewport widths.
@@ -51,4 +51,19 @@ Track the prerendering failure, nullable-reference warnings, and a future .NET 1
 - Completed EUG-009. The shared layout has an editorial footer with publication identity and links to existing meetup events, resources, and contribution pages. Contact, editorial policy, privacy, and accessibility links await approved content and working destinations.
 - Completed EUG-010. The Shared Razor library provides section headings, article previews, category labels, publication metadata, featured content, editorial grids, and publication notices that also serve as empty states. The components are available for page composition. No sample publication content was added.
 - Sass compilation succeeded. After the development server stopped, the SDK 9.0.102 solution build passed with `--no-restore` and standard output paths, reporting zero errors and one existing nullable-reference warning.
-- Owner visual review of the footer and component compositions remains open. Homepage composition remains the EUG-011 assignment.
+- Completed EUG-011. The homepage introduces EugDotNet's transition from a local .NET meetup to a regional technology publication. It uses the shared editorial components, the existing forest illustration, and a responsive feature layout. Magazine, Lab, and Developer Directory are introduced as planned sections. Community retains links to meetup events and the calendar, resources, and contribution opportunities. The homepage no longer links to the Forum placeholder.
+- The next-meetup notice uses the existing event API after WebAssembly starts. It shows an empty state when the API returns no future events. The database, API, and existing routes were left intact.
+- Sass compilation and the standard-path SDK 9.0.102 solution build passed with `--no-restore`, zero errors, and 11 existing nullable warnings.
+- Owner visual review of the editorial homepage and shared footer passed. The owner approved the composition, typography, forest illustration, palette, and publication identity. Phase 01 implementation is complete. Broader accessibility and responsive review remain open.
+
+### Deferred visual and accessibility review
+
+- Investigate the visible focus outline on the homepage heading and its relationship to Blazor's `FocusOnNavigate`.
+- Evaluate slightly wider desktop gutters.
+- Verify the current-page navigation indicator.
+- Refine the presentation of Community links.
+- Consider attribution and caption treatment for the forest illustration.
+
+### Next assignment
+
+Recommend EUG-012, the editorial content storage decision, when the owner authorizes Phase 02.

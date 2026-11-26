@@ -1,150 +1,95 @@
-﻿@page "/"
-@using DotnetMeetup.Shared.Components.Calendar
-@using DotnetMeetup.Shared.Components.CalendarPicker
-@using DotnetMeetup.Shared.Enums.UI
-@attribute [StreamRendering]
-
-<PageTitle>Home</PageTitle>
-
-<!-- Hero Section -->
-<section class="splash-hero text-center text-white py-5">
-    <div class="container content">
-        <p class="lead mt-2">
-            Whether you're here to contribute, collaborate, or catch a talk —
-            choose your path below.
-        </p>
-        <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
-            <a href="/events" class="btn btn-primary btn-lg">
-                I’m here for the events
-            </a>
-            <a href="#how-it-works" class="btn btn-outline-light btn-lg">
-                Need more info before diving in?
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- How It Works -->
-
-<section id="how-it-works" class="py-5 bg-light">
-    <div class="container text-center">
-        <h1 class="mb-4">Welcome to the Eugene Dotnet Meetup HQ</h1>
-        <p class="mb-5">We’re a community of .NET developers in Eugene, Oregon.</p>
-
-        <p class="lead">Here’s how to get involved with the Eugene .NET community:</p>
-
-        <!-- Conversational Onboarding Grid -->
-        <div class="row text-start gx-4 gy-4 mt-4">
-            <div class="col-md-6">
-                <div class="p-4 border rounded bg-white shadow-sm h-100">
-                    <h5>👋 Welcome!</h5>
-                    <p>Whether you're new to .NET, switching languages, or curious about Eugene’s tech scene, you're in the right place. We're a friendly bunch of learners, hobbyists, and pros.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="p-4 border rounded bg-white shadow-sm h-100">
-                    <h5>📅 Events</h5>
-                    <p><a href="/events">Check the calendar</a> to find local meetups, lightning talks, and beginner-friendly gatherings.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="p-4 border rounded bg-white shadow-sm h-100">
-                    <h5>📚 Shared Resources</h5>
-                    <p>Need a jumpstart? Visit <a href="/shared-resources">Shared Resources</a> for docs, starter kits, and tools curated by the community.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="p-4 border rounded bg-white shadow-sm h-100">
-                    <h5>💬 Forum</h5>
-                    <p><a href="/forum">Say hi</a>, ask questions, share code, or connect with others in our open discussion space.</p>
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="p-4 border rounded bg-white shadow-sm h-100">
-                    <h5>🤝 Contribute</h5>
-                    <p>Help out by giving a talk, building features, or writing guides. <a href="/contribute">Visit the Contribute page</a> to get started — all levels welcome.</p>
-                </div>
-            </div>
-        </div>
-
-
-
-
-    </div>
-</section>
-
-
-
-
-<!-- Upcoming Events + Calendar -->
-<!-- Next Meetup Preview -->
-<section id="next-meetup" class="py-5 bg-light">
-    <div class="container">
-        <h2 class="mb-4 text-center">Next Meetup</h2>
-
-        @if (events?.Any() == true)
-        {
-            var next = events
-            .Where(e => e.Date > DateTime.Now)
-            .OrderBy(e => e.Date)
-            .FirstOrDefault();
-
-            if (next is not null)
-            {
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card shadow-sm border-0">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">@next.Title</h5>
-                                <p class="card-text text-muted mb-1">@next.Date.ToString("dddd, MMMM d — h:mm tt")</p>
-                                @if (!string.IsNullOrWhiteSpace(next.Location))
-                                {
-                                    <p class="card-text mb-0">@next.Location</p>
-                                }
-                                <a href="/events" class="btn btn-primary mt-3">View All Events</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-            else
-            {
-                <p class="text-center text-muted">No upcoming events currently scheduled. Check back soon!</p>
-            }
-        }
-        else
-        {
-            <p class="text-center text-muted">Loading events…</p>
-        }
-    </div>
-</section>
-
+@page "/"
+@using DotnetMeetup.Shared.Components.Editorial
+@using DotnetMeetup.Shared.Models
 @inject HttpClient Http
 
-@code {
-    private List<EventDto>? events;
+<PageTitle>EugDotNet | Technology, Engineering &amp; Community</PageTitle>
 
-    protected override async Task OnInitializedAsync()
+<main class="editorial-container editorial-home">
+    <FeaturedContent>
+        <div class="editorial-home__feature">
+            <div class="editorial-home__intro">
+                <h1>From a local meetup to a regional technology publication</h1>
+                <p>EugDotNet began as a .NET meetup in Eugene, Oregon. It is growing into an independent publication about technology, engineering, and the people who build software in the Pacific Northwest.</p>
+                <p>The publication will cover practical engineering and share open experiments. The original meetup records and community resources remain available as that work takes shape.</p>
+            </div>
+            <img class="editorial-home__illustration" src="images/forrest_mountains.png"
+                 alt="Illustration of evergreen forests and layered mountain ridges" width="1536" height="1024" />
+        </div>
+    </FeaturedContent>
+
+    <section class="editorial-home__section" aria-labelledby="in-development">
+        <EditorialSectionHeading Id="in-development" Title="In development" />
+        <EditorialGrid>
+            <div class="editorial-home__department">
+                <h3>Magazine</h3>
+                <p>Technical articles, tutorials, interviews, and reporting for developers and curious readers.</p>
+            </div>
+            <div class="editorial-home__department">
+                <h3>Lab</h3>
+                <p>Software projects, experiments, and demonstrations that document how they were built and what was learned.</p>
+            </div>
+            <div class="editorial-home__department">
+                <h3>Developer Directory</h3>
+                <p>A voluntary directory for discovering developers and their areas of practice in the region.</p>
+            </div>
+        </EditorialGrid>
+    </section>
+
+    <section class="editorial-home__section" id="how-it-works" aria-labelledby="community">
+        <EditorialSectionHeading Id="community" Title="Community"
+                                 Description="Explore EugDotNet’s meetup history and find ways to take part." />
+        <div class="editorial-home__community">
+            <ul class="editorial-home__links">
+                <li><a href="/events">Meetup events and calendar</a></li>
+                <li><a href="/shared-resources">Shared resources</a></li>
+                <li><a href="/contribute">Contribute to EugDotNet</a></li>
+            </ul>
+            <div id="next-meetup">
+                @if (_nextMeetup is { } meetup)
+                {
+                    <PublicationNotice Title="Next meetup">
+                        <p>@meetup.Title</p>
+                        <p>
+                            <time datetime="@meetup.Date.ToString("s")">@meetup.Date.ToString("dddd, MMMM d, yyyy, h:mm tt")</time>
+                            @if (!string.IsNullOrWhiteSpace(meetup.Location))
+                            {
+                                <span> · @meetup.Location</span>
+                            }
+                        </p>
+                    </PublicationNotice>
+                }
+                else if (_eventsLoaded)
+                {
+                    <PublicationNotice Title="No upcoming meetups are listed." />
+                }
+            </div>
+        </div>
+    </section>
+</main>
+
+@code {
+    private Event? _nextMeetup;
+    private bool _eventsLoaded;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        if (!firstRender)
+            return;
+
+        // The same-origin API client is available after interactive rendering starts.
         try
         {
-            events = await Http.GetFromJsonAsync<List<EventDto>>("api/events");
+            var events = await Http.GetFromJsonAsync<List<Event>>("api/events");
+            var now = DateTime.Now;
+            _nextMeetup = events?.Where(meetup => meetup.Date > now).MinBy(meetup => meetup.Date);
+            _eventsLoaded = events is not null;
         }
         catch (Exception ex)
         {
             Console.Error.WriteLine($"Failed to load events: {ex.Message}");
         }
-    }
 
-    public class EventDto
-    {
-        public string Title { get; set; } = "";
-        public string? Description { get; set; }
-        public DateTime Date { get; set; }
-        public string? Location { get; set; }
+        StateHasChanged();
     }
 }
