@@ -1,0 +1,18 @@
+<header class="editorial-section-heading">
+    <h2 id="@Id" class="editorial-section-heading__title">@Title</h2>
+    @if (!string.IsNullOrWhiteSpace(Description))
+    {
+        <p>@Description</p>
+    }
+</header>
+
+@code {
+    [Parameter, EditorRequired]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string? Id { get; set; }
+
+    [Parameter]
+    public string? Description { get; set; }
+}
