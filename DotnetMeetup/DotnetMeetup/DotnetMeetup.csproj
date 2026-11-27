@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="Data/HistoricalMeetups.json" />
+    <EmbeddedResource Include="Data/HistoricalMeetups.json" LogicalName="HistoricalMeetups.json" />
   </ItemGroup>
 
   <ItemGroup>

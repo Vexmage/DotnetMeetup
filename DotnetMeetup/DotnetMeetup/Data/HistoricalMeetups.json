@@ -1,0 +1,57 @@
+[
+  {
+    "archiveId": "2025-01-08-dotnet-dinner",
+    "title": ".NET Dinner – January",
+    "date": "2025-01-08T17:30:00",
+    "location": "Claim 52 Kitchen, Eugene",
+    "description": "An evening of conversation and connection for .NET developers in Eugene. Hosted by Mark Davis, this casual dinner welcomed newcomers and veterans alike to network, share insights, and discuss the local dev scene.",
+    "credit": {
+      "role": "host",
+      "name": "Mark Davis"
+    }
+  },
+  {
+    "archiveId": "2025-02-28-dotnet-dinner",
+    "title": ".NET Dinner – February",
+    "date": "2025-02-28T17:30:00",
+    "location": "Claim 52 Kitchen, Eugene",
+    "description": "Hosted by Mark Davis, an informal community dinner to share updates about upcoming EugDotNet meetups, introduce the team, and discuss CodeChops — a mentoring program for learning Blazor and Oqtane.",
+    "credit": {
+      "role": "host",
+      "name": "Mark Davis"
+    }
+  },
+  {
+    "archiveId": "2025-03-12-aspnet-core-mvc-workshop",
+    "title": "ASP.NET Core MVC Workshop",
+    "date": "2025-03-12T18:00:00",
+    "location": "Deschutes Hall Room 220, UO",
+    "description": "Presented by Joel Southall, this hands-on intro to ASP.NET Core MVC used EF Core and SQLite. We explored CRUD operations and MVC patterns in a practical .NET session.",
+    "credit": {
+      "role": "speaker",
+      "name": "Joel Southall"
+    }
+  },
+  {
+    "archiveId": "2025-04-23-code-koans-and-katas",
+    "title": "Code Koans and Katas",
+    "date": "2025-04-23T18:00:00",
+    "location": "Deschutes Hall Room 220, UO",
+    "description": "Michael Birchmeier guided us through Code Koans and Katas—interactive coding exercises for sharpening skills and deepening understanding.",
+    "credit": {
+      "role": "speaker",
+      "name": "Michael Birchmeier"
+    }
+  },
+  {
+    "archiveId": "2025-06-05-blazorphilosobot",
+    "title": "BlazorPhilosobot: Building a Chatbot with .NET and AI",
+    "date": "2025-06-05T18:00:00",
+    "location": "Deschutes Hall Room 220, UO",
+    "description": "Joel Southall walked us through building a custom chatbot using Blazor and OpenAI's API. This hands-on presentation introduced BlazorPhilosobot — a conversational app powered by AI and crafted personas — and explored integrating .NET web development with modern LLM-based interactivity.",
+    "credit": {
+      "role": "speaker",
+      "name": "Joel Southall"
+    }
+  }
+]

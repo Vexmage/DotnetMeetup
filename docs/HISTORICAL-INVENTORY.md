@@ -2,7 +2,7 @@
 
 ## Meetup records
 
-The [repository assessment](REPOSITORY-ASSESSMENT.md) identified four 2025 records in the committed SQLite snapshot and the committed version of `DotnetMeetup.Client/Pages/Events.razor`. The working snapshot in `DotnetMeetup/DotnetMeetup/DotnetMeetup.db` and the empty-table seed in the host's `Program.cs` include the June session as a fifth record. The current Events page uses the database-backed API. The manual smoke test confirmed five insertions in an isolated database. Deployed coverage remains unknown.
+The [repository assessment](REPOSITORY-ASSESSMENT.md) identified four 2025 records in the committed SQLite snapshot and the committed version of `DotnetMeetup.Client/Pages/Events.razor`. The working SQLite snapshot also contains the June session. The [JSON archive](../DotnetMeetup/DotnetMeetup/Data/HistoricalMeetups.json) preserves all five records and the credits verified in their descriptions. Dates retain the original Eugene wall-clock values without adding an offset. Archive IDs are stable and independent of SQLite IDs. The Events page continues to use the database-backed API. Deployed coverage remains unknown.
 
 | Recorded date and local time | Event and attribution | Venue and recorded subject |
 | --- | --- | --- |
@@ -30,5 +30,12 @@ Community references include [EugDotNet on Meetup](https://www.meetup.com/eugdot
 
 - The host's `wwwroot/images/` contains the navbar logo, favicon variants, and `forrest_mountains.png`. Shared's `wwwroot/background.png` and the four timestamped PNGs linked from the root README are site and design assets. Preserve the files and record provenance for assets carried forward. The untracked screenshot was outside the assessment scope.
 - Compare the full descriptions from Git, the seed, and SQLite before migration. Preserve original wording, dates, venue details, host and speaker credits, source URLs, and source differences. Label reconstructions and corrections. Record missing details as unknown.
-- Assign stable archive identifiers and slugs after review. SQLite row IDs shifted when the June record was added, and populated databases skip the empty-table seed. Check completeness and deduplication before switching readers to the archive.
+- Keep archive IDs stable when editing metadata. SQLite row IDs shifted when the June record was added to the working snapshot. Review public slugs and route mappings before switching readers to the archive.
 - Keep existing routes and assets accessible until the replacement archive is reviewed and approved. Review any route mappings or redirects before changing URLs. Keep past meetups visibly archival and discoverable through the proposed `/community/meetups` section. See the [site map](SITE-MAP.md#8-community) and [archive model](CONTENT-MODEL.md#12-meetup-archive-model).
+
+## Import and migration strategy
+
+The host embeds the JSON and imports missing events at startup after the schema is available. The importer matches on recorded date and time, title, and venue, allowing the replacement character found in legacy dinner titles. It inserts in a single SQLite write transaction and leaves existing rows and IDs intact. Archive IDs stay in the JSON. A legacy record with a changed title, time, or venue needs manual reconciliation before import to avoid a duplicate. An existing row with the same matching fields is preserved even if its description differs.
+
+- **Development.** For a disposable SQLite database, set the database connection to the isolated file, select the Development environment, and explicitly set `Database__ApplyMigrationsOnStartup=true`. The setting defaults to off. A fresh database needs its schema before the importer can run.
+- **Production.** Back up the persistent database and review and test the EF migration against a copy. Use a separate deployment step with a single runner to apply the reviewed migration before starting the host. The host then performs the insert-only archive import. The startup migration setting has no effect outside Development. Verify all five records through the event API after an approved release.
